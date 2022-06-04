@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="/main.css" rel="stylesheet" type="text/css">
+    <title>Büros</title>
+</head>
+
+<body>
+<h2>Büro</h2>
+
+<div th:each="b: ${buero}" th:value="${b}">
+    <div>
+        <label>Id</label>
+        <span th:text="${b.id}"></span>
+    </div>
+    <div>
+        <label>Name</label>
+        <span th:text="${b.name}"></span>
+    </div>
+    <div>
+        <label>Kapazität</label>
+        <span th:text="${b.kapazitaet}"></span>
+    </div>
+    <div>
+        <label>Höhe</label>
+        <span th:text="${b.hoehe}"></span>
+    </div>
+    <div>
+        <label>Fläche</label>
+        <span th:text="${b.flaeche}"></span>
+    </div>
+
+</div>
+</body>

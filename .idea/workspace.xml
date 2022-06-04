@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3740fce2-8d2b-497d-b994-cfcbe4e9bdd6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/htw_berlin/imi/db/JdbcSampleApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/htw_berlin/imi/db/entities/ArbeitsRaum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/htw_berlin/imi/db/entities/BueroRaum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/htw_berlin/imi/db/entities/Entity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/htw_berlin/imi/db/entities/Raum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/htw_berlin/imi/db/services/BueroRaumEntityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/htw_berlin/imi/db/web/BueroRaumMvcController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/buero-detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/bueros.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/uni-schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/de/htw_berlin/imi/db/services/BueroRaumEntityServiceTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectId" id="2A6hhX3FKSi2SYys9IWcsK7ZZtZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/Gerald/IdeaProjects/htw-jdbc-sample/src/main/resources/templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Facets",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "settings.saveactions",
+    "spring.configuration.checksum": "cb5c5601fc261f3bfef8cf4101b93a6d"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="de.htw_berlin.imi.db.entities" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gerald\IdeaProjects\htw-jdbc-sample\src\main\resources\templates" />
+      <recent name="C:\Users\Gerald\IdeaProjects\htw-jdbc-sample\src\main\resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="de.htw_berlin.imi.db.services" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.BueroRaumEntityServiceTest.cannotfindById">
+    <configuration name="BueroRaumEntityServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="htw-jdbc-sample" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.htw_berlin.imi.db.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.htw_berlin.imi.db.services" />
+      <option name="MAIN_CLASS_NAME" value="de.htw_berlin.imi.db.services.BueroRaumEntityServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BueroRaumEntityServiceTest.cannotfindById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="htw-jdbc-sample" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.htw_berlin.imi.db.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.htw_berlin.imi.db.services" />
+      <option name="MAIN_CLASS_NAME" value="de.htw_berlin.imi.db.services.BueroRaumEntityServiceTest" />
+      <option name="METHOD_NAME" value="cannotfindById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BueroRaumEntityServiceTest.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="htw-jdbc-sample" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.htw_berlin.imi.db.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.htw_berlin.imi.db.services" />
+      <option name="MAIN_CLASS_NAME" value="de.htw_berlin.imi.db.services.BueroRaumEntityServiceTest" />
+      <option name="METHOD_NAME" value="findAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="htw-jdbc-sample" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="de.htw_berlin.imi.db.JdbcSampleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BueroRaumEntityServiceTest.cannotfindById" />
+        <item itemvalue="JUnit.BueroRaumEntityServiceTest" />
+        <item itemvalue="JUnit.BueroRaumEntityServiceTest.findAll" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3740fce2-8d2b-497d-b994-cfcbe4e9bdd6" name="Changes" comment="" />
+      <created>1654336066859</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654336066859</updated>
+      <workItem from="1654336068733" duration="8678000" />
+      <workItem from="1654350807770" duration="3229000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <title>Büros</title>
+</head>
+
+<body>
+<h2>Büros</h2>
+
+<table>
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Kapazität</td>
+        <td>Höhe</td>
+        <td>Fläche</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="b: ${bueros}" th:value="${b}">
+        <td>
+            <span th:text="${b.id}"></span>
+        </td>
+        <td>
+            <a th:href="@{'/ui/bueros/' + ${b.id}}">
+                <span th:text="${b.name}"></span>
+            </a>
+        </td>
+        <td>
+            <span th:text="${b.kapazitaet}"></span>
+        </td>
+        <td>
+            <span th:text="${b.hoehe}"></span>
+        </td>
+        <td>
+            <span th:text="${b.flaeche}"></span>
+        </td>
+        </a>
+    </tr>
+    </tbody>
+</table>
+</body>
