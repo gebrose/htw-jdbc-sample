@@ -1,6 +1,7 @@
 package de.htw_berlin.imi.db.services;
 
 import de.htw_berlin.imi.db.entities.Entity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.DriverManager;
@@ -15,12 +16,14 @@ import java.util.Optional;
  *
  * @param <E> the entity class.
  */
+@Slf4j
 public abstract class AbstractEntityService<E extends Entity> {
 
     @Value("${jdbc.connectionString}")
     private String jdbcConnectionString;
 
     protected ResultSet query(final String sql) throws SQLException {
+        log.debug("query: {}", sql);
         return createStatement().executeQuery(sql);
     }
 

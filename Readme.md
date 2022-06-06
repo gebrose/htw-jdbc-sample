@@ -1,4 +1,6 @@
-### HTW Berlin, IMI, Datenbanken, SS 2022
+### HTW Berlin, IMI
+
+#### Datenbanken, SS 2022, Brose
 
 # Spring boot JDBC sample application
 
@@ -25,4 +27,16 @@ Run `mvn clean test` or the individual integration test `BueroRaumEntityTest` to
 Go to `de.htw_berlin.imi.db.JdbcSampleApplication`.
 Right-click on the class name and select "Run Application" or "Debug Application" in IntelliJ Idea.
 
-The application can be accessed at `http://localhost:8080`
+The project can also be run from the command line using `mvn org.springframework.boot:spring-boot-maven-plugin:run`
+
+The running application can be accessed at `http://localhost:8080`.
+
+**5. Extending the application**
+
+The web application uses **Springboot**  for server-side rendering and **Thymeleaf** as a templating engine.
+Thymeleaf has a powerful expression language,
+but you do not need to learn any details to work on the tasks here.
+Copying and modifying the example HTML code should be straightforward.
+
+HTML files reside in `src/main/resources/templates`,
+styles are defined in `src/main/resources/static/main.css`.
