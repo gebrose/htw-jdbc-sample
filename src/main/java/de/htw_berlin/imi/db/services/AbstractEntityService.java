@@ -20,11 +20,11 @@ public abstract class AbstractEntityService<E extends Entity> {
     @Value("${jdbc.connectionString}")
     private String jdbcConnectionString;
 
-    protected ResultSet getResultSet(final String sql) throws SQLException {
-        return getStatement().executeQuery(sql);
+    protected ResultSet query(final String sql) throws SQLException {
+        return createStatement().executeQuery(sql);
     }
 
-    private Statement getStatement() throws SQLException {
+    private Statement createStatement() throws SQLException {
         return DriverManager.getConnection(jdbcConnectionString).createStatement();
     }
 

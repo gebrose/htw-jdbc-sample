@@ -39,7 +39,7 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
     public List<BueroRaum> findAll() {
         final List<BueroRaum> result = new ArrayList<>();
         try {
-            final ResultSet resultSet = getResultSet(FIND_ALL_QUERY);
+            final ResultSet resultSet = query(FIND_ALL_QUERY);
             while (resultSet.next()) {
                 result.add(createBueroRaum(resultSet));
             }
@@ -52,7 +52,7 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
     @Override
     public Optional<BueroRaum> findById(final long id) {
         try {
-            final ResultSet resultSet = getResultSet(FIND_BY_ID_QUERY + id);
+            final ResultSet resultSet = query(FIND_BY_ID_QUERY + id);
             if (resultSet.next()) {
                 return Optional.of(createBueroRaum(resultSet));
             }

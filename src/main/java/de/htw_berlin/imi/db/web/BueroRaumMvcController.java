@@ -15,7 +15,7 @@ public class BueroRaumMvcController {
     @Autowired
     BueroRaumEntityService bueroRaumEntityService;
 
-    @GetMapping("/list")
+    @GetMapping
     String findAll(final Model model) {
         model.addAttribute("bueros", bueroRaumEntityService.findAll());
         return "bueros";
