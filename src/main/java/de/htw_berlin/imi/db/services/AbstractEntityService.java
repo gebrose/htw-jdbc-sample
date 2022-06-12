@@ -2,12 +2,9 @@ package de.htw_berlin.imi.db.services;
 
 import de.htw_berlin.imi.db.entities.Entity;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,19 +14,21 @@ import java.util.Optional;
  * @param <E> the entity class.
  */
 @Slf4j
-public abstract class AbstractEntityService<E extends Entity> {
+@Service
+public abstract class AbstractEntityService<E extends Entity> extends DatabaseClient {
 
-    @Value("${jdbc.connectionString}")
-    private String jdbcConnectionString;
+    @Autowired
+    protected IdGenerator idGenerator;
 
-    protected ResultSet query(final String sql) throws SQLException {
-        log.debug("query: {}", sql);
-        return createStatement().executeQuery(sql);
-    }
+    /**
+     * @return an empty entity, initialized with a new, unique
+     */
+    public abstract E create();
 
-    private Statement createStatement() throws SQLException {
-        return DriverManager.getConnection(jdbcConnectionString).createStatement();
-    }
+    /**
+     * Save the entity to the database
+     */
+    public abstract void save(E entity);
 
     public abstract List<E> findAll();
 

@@ -9,11 +9,38 @@
 <body>
 <h2>Büros</h2>
 
+<h3>New</h3>
+<div>
+    <form th:action="@{'/ui/bueros'}"
+          th:object="${bueroTemplate}"
+          method="POST"
+          enctype="multipart/form-data"
+          action="#">
+        <div>
+            <label>name</label>
+            <input id="Name" type="text" th:field="*{name}"
+                   placeholder="Enter Name"/>
+        </div>
+        <div>
+            <label>Raumnummer</label>
+            <input id="roomNumber" type="text" th:field="*{raumnummer}"/>
+        </div>
+        <div>
+            <label>Kapazität</label>
+            <input id="Kapazität" type="number" th:field="*{kapazitaet}"/>
+        </div>
+        <!-- TODO: fehlende Attribute ergänzen -->
+        <input type="submit" width="60" class="btn" value="save"/>
+    </form>
+</div>
+
+<h3>List</h3>
 <table>
     <thead>
     <tr>
         <td>Id</td>
         <td>Name</td>
+        <td>Raumnummer</td>
         <td>Kapazität</td>
         <td>Höhe</td>
         <td>Fläche</td>
@@ -31,6 +58,9 @@
             </a>
         </td>
         <td>
+            <span th:text="${b.raumnummer}"></span>
+        </td>
+        <td>
             <span th:text="${b.kapazitaet}"></span>
         </td>
         <td>
@@ -42,5 +72,7 @@
         </a>
     </tr>
     </tbody>
+
+
 </table>
 </body>
