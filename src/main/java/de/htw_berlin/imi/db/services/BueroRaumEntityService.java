@@ -114,9 +114,7 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
         try {
             final Connection connection = getConnection(false);
             connection.setAutoCommit(false);
-            try (final PreparedStatement basePreparedStatement = getPreparedStatement(connection, INSERT_BASE_QUERY);
-                 final PreparedStatement workPreparedStatement = getPreparedStatement(connection, INSERT_WORK_ROOM);
-                 final PreparedStatement officePreparedStatement = getPreparedStatement(connection, INSERT_OFFICE_ROOM)) {
+            try (final PreparedStatement basePreparedStatement = getPreparedStatement(connection, INSERT_BASE_QUERY); final PreparedStatement workPreparedStatement = getPreparedStatement(connection, INSERT_WORK_ROOM); final PreparedStatement officePreparedStatement = getPreparedStatement(connection, INSERT_OFFICE_ROOM)) {
 
                 createBaseClassPart(e, basePreparedStatement);
                 createWorkRoomPart(e, workPreparedStatement);
@@ -141,7 +139,6 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
             connection.setAutoCommit(false);
             try (final PreparedStatement basePreparedStatement = getPreparedStatement(connection, UPDATE_BASE_QUERY);
                  final PreparedStatement workPreparedStatement = getPreparedStatement(connection, UPDATE_WORK_ROOM)) {
-
                 updateBasePart(e, basePreparedStatement);
                 updateWorkPart(e, workPreparedStatement);
                 connection.commit();
@@ -150,14 +147,14 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
                 connection.rollback();
                 throw new RuntimeException(ex);
             }
+            connection.close();
         } catch (final SQLException ex) {
             log.error("Could not get connection.");
             throw new RuntimeException(ex);
         }
     }
 
-    private void updateWorkPart(final BueroRaum e, final PreparedStatement workPreparedStatement) throws
-            SQLException {
+    private void updateWorkPart(final BueroRaum e, final PreparedStatement workPreparedStatement) throws SQLException {
         workPreparedStatement.setInt(1, e.getKapazitaet());
         workPreparedStatement.setLong(2, e.getId());
         final int update = workPreparedStatement.executeUpdate();
@@ -205,14 +202,14 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
                 connection.rollback();
                 throw new RuntimeException(ex);
             }
+            connection.close();
         } catch (final SQLException ex) {
             log.error("Could not get connection.");
             throw new RuntimeException(ex);
         }
     }
 
-    private void createOfficePart(final BueroRaum e, final PreparedStatement officePreparedStatement) throws
-            SQLException {
+    private void createOfficePart(final BueroRaum e, final PreparedStatement officePreparedStatement) throws SQLException {
         officePreparedStatement.setLong(1, e.getId());
         final int update = officePreparedStatement.executeUpdate();
         if (update != 1) {
@@ -220,8 +217,7 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
         }
     }
 
-    private void createWorkRoomPart(final BueroRaum e, final PreparedStatement workPreparedStatement) throws
-            SQLException {
+    private void createWorkRoomPart(final BueroRaum e, final PreparedStatement workPreparedStatement) throws SQLException {
         workPreparedStatement.setLong(1, e.getId());
         workPreparedStatement.setInt(2, e.getKapazitaet());
         final int update = workPreparedStatement.executeUpdate();
@@ -230,8 +226,7 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
         }
     }
 
-    private void createBaseClassPart(final BueroRaum e, final PreparedStatement basePreparedStatement) throws
-            SQLException {
+    private void createBaseClassPart(final BueroRaum e, final PreparedStatement basePreparedStatement) throws SQLException {
         basePreparedStatement.setLong(1, e.getId());
         basePreparedStatement.setString(2, e.getName());
         basePreparedStatement.setString(3, e.getRaumnummer());
