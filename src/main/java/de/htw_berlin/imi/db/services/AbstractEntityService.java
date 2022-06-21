@@ -30,6 +30,10 @@ public abstract class AbstractEntityService<E extends Entity> extends DatabaseCl
      */
     public abstract void save(E entity);
 
+    public abstract void update(E entity);
+
+    public abstract void delete(E entity);
+
     public abstract List<E> findAll();
 
     public abstract Optional<E> findById(final long id);

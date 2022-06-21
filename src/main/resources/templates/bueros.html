@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link href="/main.css" rel="stylesheet" type="text/css">
     <title>Büros</title>
 </head>
 
@@ -11,26 +11,26 @@
 
 <h3>New</h3>
 <div>
-    <form th:action="@{'/ui/bueros'}"
-          th:object="${bueroTemplate}"
-          method="POST"
+    <form action="#"
           enctype="multipart/form-data"
-          action="#">
+          method="POST"
+          th:action="@{'/ui/bueros'}"
+          th:object="${bueroTemplate}">
         <div>
             <label>name</label>
-            <input id="Name" type="text" th:field="*{name}"
-                   placeholder="Enter Name"/>
+            <input id="Name" placeholder="Enter Name" th:field="*{name}"
+                   type="text"/>
         </div>
         <div>
             <label>Raumnummer</label>
-            <input id="roomNumber" type="text" th:field="*{raumnummer}"/>
+            <input id="roomNumber" th:field="*{raumnummer}" type="text"/>
         </div>
         <div>
             <label>Kapazität</label>
-            <input id="Kapazität" type="number" th:field="*{kapazitaet}"/>
+            <input id="Kapazität" th:field="*{kapazitaet}" type="number"/>
         </div>
         <!-- TODO: fehlende Attribute ergänzen -->
-        <input type="submit" width="60" class="btn" value="save"/>
+        <input class="btn" type="submit" value="save" width="60"/>
     </form>
 </div>
 
@@ -69,7 +69,14 @@
         <td>
             <span th:text="${b.flaeche}"></span>
         </td>
-        </a>
+        <td>
+            <form action="#"
+                  enctype="multipart/form-data"
+                  th:action="@{'/ui/bueros/'+ ${b.id}}"
+                  th:method="DELETE">
+                <input class="btn" type="submit" value="Delete" width="60"/>
+            </form>
+        </td>
     </tr>
     </tbody>
 

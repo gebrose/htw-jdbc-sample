@@ -16,17 +16,19 @@ public class DatabaseClient {
     @Value("${jdbc.connectionString}")
     private String jdbcConnectionString;
 
-    protected ResultSet query(final String sql) throws SQLException {
+    protected ResultSet query(final String sql, final boolean readOnly) throws SQLException {
         log.debug("query: {}", sql);
-        return createStatement().executeQuery(sql);
+        return createStatement(readOnly).executeQuery(sql);
     }
 
-    protected Statement createStatement() throws SQLException {
-        return getConnection().createStatement();
+    protected Statement createStatement(final boolean readOnly) throws SQLException {
+        return getConnection(readOnly).createStatement();
     }
 
-    protected Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(jdbcConnectionString);
+    protected Connection getConnection(final boolean readOnly) throws SQLException {
+        final Connection connection = DriverManager.getConnection(jdbcConnectionString);
+        connection.setReadOnly(readOnly);
+        return connection;
     }
 
     protected PreparedStatement getPreparedStatement(final Connection connection, final String insertBaseQuery) throws SQLException {

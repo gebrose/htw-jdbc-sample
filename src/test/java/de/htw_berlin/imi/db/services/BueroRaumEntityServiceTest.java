@@ -28,9 +28,9 @@ class BueroRaumEntityServiceTest {
 
     @Test
     void findById() {
-        final Optional<BueroRaum> bueroRaumOptional = bueroRaumEntityService.findById(11);
+        final Optional<BueroRaum> bueroRaumOptional = bueroRaumEntityService.findById(10);
         assertThat(bueroRaumOptional).isPresent();
-        assertThat(bueroRaumOptional.get().getName()).isEqualTo("Office#6");
+        assertThat(bueroRaumOptional.get().getName()).isEqualTo("Office#5");
     }
 
     @Test
@@ -72,6 +72,24 @@ class BueroRaumEntityServiceTest {
     }
 
     @Test
+    void delete() {
+        final BueroRaum bueroRaum = bueroRaumEntityService.create();
+        final String roomNumber = "#" + bueroRaum.getId();
+        final String name = "Test Room " + roomNumber;
+        bueroRaum.setRaumnummer(roomNumber);
+        bueroRaum.setName(name);
+        bueroRaum.setHoehe(2.8);
+        bueroRaum.setFlaeche(25.4);
+        bueroRaum.setKapazitaet(2);
+
+        bueroRaumEntityService.save(bueroRaum);
+        bueroRaumEntityService.delete(bueroRaum);
+
+        final Optional<BueroRaum> bueroRaumOptional = bueroRaumEntityService.findById(bueroRaum.getId());
+        assertThat(bueroRaumOptional).isNotPresent();
+    }
+
+    @Test
     void createFrom() {
         final BueroDto bueroRaum = new BueroDto();
         final String roomNumber = "#17";
@@ -90,4 +108,17 @@ class BueroRaumEntityServiceTest {
         // TODO alle Attribute prüfen
     }
 
+    @Test
+    void update() {
+        final Optional<BueroRaum> bueroRaumOptional = bueroRaumEntityService.findById(11);
+        final String name = "" + System.currentTimeMillis();
+        bueroRaumOptional.ifPresent(b -> {
+            b.setName(name);
+            bueroRaumEntityService.update(b);
+        });
+        final Optional<BueroRaum> reloadedOffice = bueroRaumEntityService.findById(11);
+        assertThat(reloadedOffice)
+                .isPresent();
+        assertThat(bueroRaumOptional.get().getName()).isEqualTo(name);
+    }
 }

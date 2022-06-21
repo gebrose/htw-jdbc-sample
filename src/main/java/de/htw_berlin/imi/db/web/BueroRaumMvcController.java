@@ -39,4 +39,13 @@ public class BueroRaumMvcController {
         return "redirect:/ui/bueros";
     }
 
+    @DeleteMapping("/{id}")
+    String deleteBuero(@PathVariable("id") final long id) {
+        bueroRaumEntityService
+                .findById(id)
+                .ifPresent(b -> bueroRaumEntityService.delete(b));
+        // causes a page reload
+        return "redirect:/ui/bueros";
+    }
+
 }
