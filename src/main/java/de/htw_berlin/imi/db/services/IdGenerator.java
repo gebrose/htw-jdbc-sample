@@ -16,7 +16,7 @@ public class IdGenerator extends DatabaseClient {
             """;
 
     protected long generate() {
-        try (final Statement statement = createStatement(false)) {
+        try (final Statement statement = getConnection(false).createStatement()) {
             final ResultSet resultSet = statement.executeQuery(NEXT_ID_QUERY);
             resultSet.next();
             return resultSet.getLong("id");

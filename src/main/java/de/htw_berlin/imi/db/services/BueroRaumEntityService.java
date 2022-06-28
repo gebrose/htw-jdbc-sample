@@ -5,10 +5,7 @@ import de.htw_berlin.imi.db.web.BueroDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +30,6 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
                    ,flaeche
                    ,hoehe
                    ,kapazitaet
-                   ,stockwerk_id
                 FROM uni.v_bueros
             """;
 
@@ -68,8 +64,10 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
     @Override
     public List<BueroRaum> findAll() {
         final List<BueroRaum> result = new ArrayList<>();
-        try {
-            final ResultSet resultSet = query(FIND_ALL_QUERY, false);
+        log.debug("query: {}", FIND_ALL_QUERY);
+        try (final Connection connection = getConnection(true);
+             final Statement statement = connection.createStatement()) {
+            final ResultSet resultSet = statement.executeQuery(FIND_ALL_QUERY);
             while (resultSet.next()) {
                 result.add(getBueroRaum(resultSet));
             }
@@ -81,8 +79,10 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
 
     @Override
     public Optional<BueroRaum> findById(final long id) {
-        try {
-            final ResultSet resultSet = query(FIND_BY_ID_QUERY + id, true);
+        log.debug("query: {}", FIND_BY_ID_QUERY + id);
+        try (final Connection connection = getConnection(true);
+             final Statement statement = connection.createStatement()) {
+            final ResultSet resultSet = statement.executeQuery(FIND_BY_ID_QUERY + id);
             if (resultSet.next()) {
                 return Optional.of(getBueroRaum(resultSet));
             }
@@ -111,10 +111,11 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
     @Override
     public void save(final BueroRaum e) {
         log.debug("insert: {}", INSERT_BASE_QUERY);
-        try {
-            final Connection connection = getConnection(false);
+        try (final Connection connection = getConnection(false)) {
             connection.setAutoCommit(false);
-            try (final PreparedStatement basePreparedStatement = getPreparedStatement(connection, INSERT_BASE_QUERY); final PreparedStatement workPreparedStatement = getPreparedStatement(connection, INSERT_WORK_ROOM); final PreparedStatement officePreparedStatement = getPreparedStatement(connection, INSERT_OFFICE_ROOM)) {
+            try (final PreparedStatement basePreparedStatement = getPreparedStatement(connection, INSERT_BASE_QUERY);
+                 final PreparedStatement workPreparedStatement = getPreparedStatement(connection, INSERT_WORK_ROOM);
+                 final PreparedStatement officePreparedStatement = getPreparedStatement(connection, INSERT_OFFICE_ROOM)) {
 
                 createBaseClassPart(e, basePreparedStatement);
                 createWorkRoomPart(e, workPreparedStatement);
@@ -134,8 +135,8 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
     @Override
     public void update(final BueroRaum e) {
         log.debug("update: {}", e);
-        try {
-            final Connection connection = getConnection(false);
+        final double start = System.currentTimeMillis();
+        try (final Connection connection = getConnection(false)) {
             connection.setAutoCommit(false);
             try (final PreparedStatement basePreparedStatement = getPreparedStatement(connection, UPDATE_BASE_QUERY);
                  final PreparedStatement workPreparedStatement = getPreparedStatement(connection, UPDATE_WORK_ROOM)) {
@@ -147,11 +148,11 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
                 connection.rollback();
                 throw new RuntimeException(ex);
             }
-            connection.close();
         } catch (final SQLException ex) {
             log.error("Could not get connection.");
             throw new RuntimeException(ex);
         }
+        log.info("Update finished in {} ms.", System.currentTimeMillis() - start);
     }
 
     private void updateWorkPart(final BueroRaum e, final PreparedStatement workPreparedStatement) throws SQLException {
@@ -177,9 +178,9 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
 
     @Override
     public void delete(final BueroRaum entity) {
+        final double start = System.currentTimeMillis();
         log.debug("delete: {}", entity);
-        try {
-            final Connection connection = getConnection(false);
+        try (final Connection connection = getConnection(false)) {
             connection.setAutoCommit(false);
             try (final PreparedStatement basePreparedStatement =
                          getPreparedStatement(connection, "DELETE FROM uni.Raeume WHERE id = ?");
@@ -202,11 +203,11 @@ public class BueroRaumEntityService extends AbstractEntityService<BueroRaum> {
                 connection.rollback();
                 throw new RuntimeException(ex);
             }
-            connection.close();
         } catch (final SQLException ex) {
             log.error("Could not get connection.");
             throw new RuntimeException(ex);
         }
+        log.info("Delete finished in {} ms.", System.currentTimeMillis() - start);
     }
 
     private void createOfficePart(final BueroRaum e, final PreparedStatement officePreparedStatement) throws SQLException {

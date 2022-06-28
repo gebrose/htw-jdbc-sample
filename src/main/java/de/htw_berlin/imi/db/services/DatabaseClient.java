@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.beans.PropertyVetoException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  * Convenience class that provides access to DB connections and creates JDBC statements.
@@ -16,32 +18,23 @@ import java.sql.*;
 @Service
 public class DatabaseClient {
 
+    private static final ComboPooledDataSource POOLED_DATA_SOURCE = new ComboPooledDataSource();
+
     @Value("${jdbc.connectionString}")
     private String jdbcConnectionString;
 
-    private ComboPooledDataSource ds = new ComboPooledDataSource();
-
     @PostConstruct
     public void init() throws PropertyVetoException {
-        ds.setDriverClass("org.postgresql.Driver");
-        ds.setJdbcUrl(jdbcConnectionString);
-        ds.setUser("postgres");
-        ds.setPassword("postgres");
-        ds.setInitialPoolSize(5);
-        ds.setMaxPoolSize(50);
-    }
-
-    protected ResultSet query(final String sql, final boolean readOnly) throws SQLException {
-        log.debug("query: {}", sql);
-        return createStatement(readOnly).executeQuery(sql);
-    }
-
-    protected Statement createStatement(final boolean readOnly) throws SQLException {
-        return getConnection(readOnly).createStatement();
+        POOLED_DATA_SOURCE.setDriverClass("org.postgresql.Driver");
+        POOLED_DATA_SOURCE.setJdbcUrl(jdbcConnectionString);
+        POOLED_DATA_SOURCE.setUser("postgres");
+        POOLED_DATA_SOURCE.setPassword("postgres");
+        POOLED_DATA_SOURCE.setInitialPoolSize(5);
+        POOLED_DATA_SOURCE.setMaxPoolSize(30);
     }
 
     protected Connection getConnection(final boolean readOnly) throws SQLException {
-        final Connection connection = DriverManager.getConnection(jdbcConnectionString);
+        final Connection connection = POOLED_DATA_SOURCE.getConnection();
         connection.setReadOnly(readOnly);
         return connection;
     }

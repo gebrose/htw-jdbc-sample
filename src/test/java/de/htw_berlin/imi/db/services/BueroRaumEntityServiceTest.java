@@ -117,8 +117,7 @@ class BueroRaumEntityServiceTest {
             bueroRaumEntityService.update(b);
         });
         final Optional<BueroRaum> reloadedOffice = bueroRaumEntityService.findById(11);
-        assertThat(reloadedOffice)
-                .isPresent();
-        assertThat(bueroRaumOptional.get().getName()).isEqualTo(name);
+        assertThat(reloadedOffice).isPresent();
+        assertThat(reloadedOffice.get().getName()).isEqualTo(name);
     }
 }
