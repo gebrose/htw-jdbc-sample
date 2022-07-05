@@ -7,14 +7,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class IdGeneratorTest {
+class IdGeneratorTest extends AbstractEntityServiceTest {
 
     @Autowired
     IdGenerator idGenerator;
 
     @Test
     void getNewId() {
-        final long newId = idGenerator.generate();
+        long newId = idGenerator.generate();
+        newId = idGenerator.generate();
+
         assertThat(newId).isGreaterThan(1000);
     }
 }

@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @Component
-public class StatementRunner extends DatabaseClient {
+public class StatementRunner extends AbstractEntityServiceTest {
 
     Thread run(final String sql, final int loops) {
         final Thread t = new Thread(() -> execute(sql, loops, 7));
@@ -16,7 +16,7 @@ public class StatementRunner extends DatabaseClient {
     }
 
     private void execute(final String sql, final int loops, final int waitTimeInMillis) {
-        try (final Connection connection = getConnection(true)) {
+        try (final Connection connection = databaseClient.getConnection(false)) {
             final PreparedStatement preparedStatement;
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
             preparedStatement = connection.prepareStatement(sql);

@@ -13,7 +13,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class StockwerkEntityServiceTest {
+class StockwerkEntityServiceTest extends AbstractEntityServiceTest {
 
     @Autowired
     StockwerkEntityService stockwerkEntityService;

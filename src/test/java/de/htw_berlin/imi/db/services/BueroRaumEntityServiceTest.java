@@ -12,7 +12,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class BueroRaumEntityServiceTest {
+class BueroRaumEntityServiceTest extends AbstractEntityServiceTest {
 
     @Autowired
     BueroRaumEntityService bueroRaumEntityService;

@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- * Convenience class that provides access to DB connections and creates JDBC statements.
+ * Convenience class that provides access to pooled DB connections.
  */
 @Slf4j
 @Service
@@ -23,12 +23,21 @@ public class DatabaseClient {
     @Value("${jdbc.connectionString}")
     private String jdbcConnectionString;
 
+    @Value("${jdbc.driverClass}")
+    private String driverClass;
+
+    @Value("${jdbc.userName}")
+    private String userName;
+
+    @Value("${jdbc.password}")
+    private String password;
+
     @PostConstruct
-    public void init() throws PropertyVetoException {
-        POOLED_DATA_SOURCE.setDriverClass("org.postgresql.Driver");
+    void init() throws PropertyVetoException {
+        POOLED_DATA_SOURCE.setDriverClass(driverClass);
         POOLED_DATA_SOURCE.setJdbcUrl(jdbcConnectionString);
-        POOLED_DATA_SOURCE.setUser("postgres");
-        POOLED_DATA_SOURCE.setPassword("postgres");
+        POOLED_DATA_SOURCE.setUser(userName);
+        POOLED_DATA_SOURCE.setPassword(password);
         POOLED_DATA_SOURCE.setInitialPoolSize(5);
         POOLED_DATA_SOURCE.setMaxPoolSize(30);
     }

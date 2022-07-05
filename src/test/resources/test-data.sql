@@ -121,15 +121,15 @@ VALUES (1, 'Beamer Decke', 'Beamer', '1234-aa', 1999, 2),
        (11, 'Desk-11', 'Table', '1234-t-11', 2010, 11);
 
 INSERT INTO uni.studierende(matr_nr, name, vorname, geburtsdatum, geburtsort, anzahl_semester, studienbeginn)
-VALUES (24002, 'Xenokrates', 'Anon',    '01-01-1998', 'Athen', 2, 'WS 2021'),
-       (25403, 'Rubens', 'Peter',       '01-01-1997', 'Antwerpen', 3, 'SS 2020'),
-       (25555, 'Diotima', 'Anon',       '01-01-2000', 'Berlin', 6, 'WS 2019'),
-       (26120, 'Lovelace', 'Ada',       '01-01-2000', 'London', 3, 'SS 2020'),
-       (26830, 'Babbage', 'Charles',     '01-01-1999', 'Berlin', 4, 'WS 2020'),
-       (27550, 'Schopenhauer', 'Friedrich', '01-01-2000', 'Berlin', 4, 'WS 2020'),
-       (28106, 'Turing', 'Alan', '01-01-2001', 'London', 4, 'WS 2020'),
-       (29120, 'Theophrastos', 'Anon', '01-01-2000', 'Berlin', 4, 'WS 2020'),
-       (29555, 'Feuerbach', 'Ludwig', '01-01-2000', 'Berlin', 4, 'WS 2020');
+VALUES (24002, 'Xenokrates', 'Anon', '1998-01-01', 'Athen', 2, 'WS 2021'),
+       (25403, 'Rubens', 'Peter', '1997-01-01', 'Antwerpen', 3, 'SS 2020'),
+       (25555, 'Diotima', 'Anon', '2000-01-01', 'Berlin', 6, 'WS 2019'),
+       (26120, 'Lovelace', 'Ada', '2000-01-01', 'London', 3, 'SS 2020'),
+       (26830, 'Babbage', 'Charles', '1999-01-01', 'Berlin', 4, 'WS 2020'),
+       (27550, 'Schopenhauer', 'Friedrich', '2000-01-01', 'Berlin', 4, 'WS 2020'),
+       (28106, 'Turing', 'Alan', '2001-01-01', 'London', 4, 'WS 2020'),
+       (29120, 'Theophrastos', 'Anon', '2000-01-01', 'Berlin', 4, 'WS 2020'),
+       (29555, 'Feuerbach', 'Ludwig', '2000-01-01', 'Berlin', 4, 'WS 2020');
 
 INSERT INTO uni.professoren(pers_nr, name, rang, raum, gehalt)
 VALUES (2125, 'Sokrates', 'C4', 1, 58000),
